@@ -1,0 +1,22 @@
+<div *ngIf="category">
+ 
+  <h2>{{category.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{category.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="category.name" placeholder="name"/>
+    </label>
+  </div>
+ 
+  <button (click)="goBack()">go back</button>
+  <button (click)="save()">save</button>
+
+
+  <ul class="topics">
+      <li *ngFor="let topic of category.topics">
+        <span class="topic badge">{{topic}}</span> 
+  
+      </li>
+  </ul>
+  
+</div>

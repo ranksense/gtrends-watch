@@ -1,0 +1,23 @@
+<div id="search-component">
+    <h4>Topics Search</h4>
+   
+    <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+   
+    <ul class="search-result">
+      <div *ngFor="let category of categories$ | async" >
+      
+      <div *ngFor="let topic of category.topics">
+
+      <li *ngIf="topic.toLowerCase().includes(searchBox.value.toLowerCase())">
+
+        <a routerLink="/topics/{{category.id}}">
+          {{category.name}} - {{topic}}
+        </a>
+
+      </li>
+      </div>
+
+    </div>
+    </ul>
+  </div>
+

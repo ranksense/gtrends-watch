@@ -1,0 +1,22 @@
+<h2>Search Trends</h2>
+
+<div>
+    <label>Category name:
+      <input #categoryName />
+    </label>
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button (click)="add(categoryName.value); categoryName.value=''">
+      add
+    </button>
+  </div>
+
+<ul class="categories">
+  <li *ngFor="let category of categories">
+    <a routerLink="/topics/{{category.id}}">
+    <span class="badge">{{category.id}}</span> {{category.name}}
+    </a>
+    <button class="delete" title="delete category"
+  (click)="delete(category)">x</button>
+  </li>
+</ul>
+

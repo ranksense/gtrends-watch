@@ -1,0 +1,13 @@
+<div id="search-component">
+    <h4>Category Search</h4>
+   
+    <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+   
+    <ul class="search-result">
+      <li *ngFor="let category of categories$ | async" >
+        <a routerLink="/topics/{{category.id}}">
+          {{category.name}}
+        </a>
+      </li>
+    </ul>
+  </div>
