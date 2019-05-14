@@ -1,11 +1,21 @@
 import { TestBed, async } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Component } from '@angular/core';
+
 import { AppComponent } from './app.component';
+
+@Component({ selector: 'app-messages', template: '' })
+class MessagesStubComponent { }
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule
+      ],
       declarations: [
-        AppComponent
+        AppComponent,
+        MessagesStubComponent
       ],
     }).compileComponents();
   }));
@@ -16,16 +26,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'gtrends-watch'`, () => {
+  it(`should have as title 'Google Trends Watcher'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('gtrends-watch');
+    expect(app.title).toEqual('Google Trends Watcher');
   });
 
   it('should render title in a h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to gtrends-watch!');
+    expect(compiled.querySelector('h1').textContent).toContain('Google Trends Watcher');
   });
 });
