@@ -44,4 +44,18 @@ describe('CategoriesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it(`should have call setCanonicalURL function when init component`, () => {
+    expect(metaTagsService.setCanonicalURL).toHaveBeenCalled();
+  });
+
+  it(`should have call setPageTitle function when init component`, () => {
+    const pageTitle = 'Global Trends - Google Trends Watcher';
+    expect(metaTagsService.setPageTitle).toHaveBeenCalledWith(pageTitle);
+  });
+
+  it(`should have call setMetaDescription function when init component`, () => {
+    expect(metaTagsService.setMetaDescription).toHaveBeenCalled();
+  });
+
 });

@@ -57,4 +57,18 @@ describe('DashboardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it(`should have call function setCanonicalURL when init component`, () => {
+    expect(metaTagsService.setCanonicalURL).toHaveBeenCalled();
+  });
+
+  it(`should have call function setPageTitle when init component`, () => {
+    const pageTitle = 'Main Dashboard - Google Trends Watcher';
+    expect(metaTagsService.setPageTitle).toHaveBeenCalledWith(pageTitle);
+  });
+
+  it(`should have call function setMetaDescription when init component`, () => {
+    expect(metaTagsService.setMetaDescription).toHaveBeenCalled();
+  });
+
 });

@@ -20,9 +20,10 @@ describe('CategoryTopicsComponent', () => {
     'setPageTitle',
     'setMetaDescription'
   ]);
+
   beforeEach(async(() => {
 
-    categoryService.getCategory.and.returnValue( of() );
+    categoryService.getCategory.and.returnValue(of());
 
     TestBed.configureTestingModule({
       imports: [
@@ -47,4 +48,17 @@ describe('CategoryTopicsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it(`should have call setCanonicalURL function when init component`, () => {
+    expect(metaTagsService.setCanonicalURL).toHaveBeenCalled();
+  });
+
+  it(`should have call setPageTitle function when init component`, () => {
+    expect(metaTagsService.setPageTitle).toHaveBeenCalled();
+  });
+
+  it(`should have call setMetaDescription function when init component`, () => {
+    expect(metaTagsService.setMetaDescription).toHaveBeenCalled();
+  });
+
 });
