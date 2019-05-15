@@ -2,10 +2,10 @@
 
 <div>
     <label>Category name:
-      <input #categoryName />
+      <input data-protractor="category-name-input" #categoryName />
     </label>
     <!-- (click) passes input value to add() and then clears the input -->
-    <button (click)="add(categoryName.value); categoryName.value=''">
+    <button data-protractor="create-category-button" (click)="add(categoryName.value); categoryName.value=''">
       add
     </button>
   </div>
@@ -15,7 +15,7 @@
     <a routerLink="/topics/{{category.id}}">
     <span class="badge">{{category.id}}</span> {{category.name}}
     </a>
-    <button class="delete" title="delete category"
+    <button data-protractor="delete-category-button" class="delete" title="delete category"
   (click)="delete(category)">x</button>
   </li>
 </ul>
