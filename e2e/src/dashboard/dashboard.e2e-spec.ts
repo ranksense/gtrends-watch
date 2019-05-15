@@ -31,6 +31,10 @@ describe('Dashboard page', () => {
     expect(page.getTopicsSerachComponent()).not.toBeNull();
   });
 
+  it('Should display Topics Search component', () => {
+    expect(page.getTopicsSerachComponent()).not.toBeNull();
+  });
+
   afterEach(async () => {
     // Assert that there are no errors emitted from the browser
     const logs = await browser.manage().logs().get(logging.Type.BROWSER);

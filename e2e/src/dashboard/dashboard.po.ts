@@ -1,7 +1,7 @@
 import { browser, by, element } from 'protractor';
 
 export class DashboardPage {
-  url = `http://localhost:4200/dashboard`
+  url = `http://localhost:4200/dashboard`;
 
   navigateTo() {
     return browser.get(this.url) as Promise<any>;
