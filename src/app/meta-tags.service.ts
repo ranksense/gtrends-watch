@@ -33,5 +33,19 @@ export class MetaTagsService {
   setMetaDescription(desc: string) {
     this.meta.updateTag({ name: 'description', content: desc })
   }
+
+  addMetaTags(page: string){
+    this.meta.addTag({name: 'keywords', content: 'Angular Project, Create Angular Project, Google Trends Watcher'});
+    this.meta.addTag({name: 'description', content: page + ' Google Trends Watcher Angular project training on rsgitech.com'});
+    this.meta.addTag({name: 'author', content: 'a'});
+    this.meta.addTag({name: 'robots', content: 'index, follow'});
+
+    this.meta.updateTag({ property: 'og:type', content: 'article' });
+    this.meta.updateTag({ property: 'og:site_name', content: 'Google Trends Watcher Angular' });
+    this.meta.updateTag({ property: 'og:title', content: page + ' Google Trends Watcher Angular title' });
+    this.meta.updateTag({ property: 'og:description', content: page + ' description Google Trends Watcher Angular ' });
+    this.meta.updateTag({ property: 'og:image', content: 'https://angularfirebase.com/images/logo.png' });
+    this.meta.updateTag({ property: 'og:url', content: `https://rendertron.azurewebsites.net/` });
+  }
 }
 
