@@ -1,7 +1,5 @@
-import { browser, logging, protractor } from 'protractor';
+import { browser, logging } from 'protractor';
 import { DashboardPage } from './dashboard.po';
-
-const EC = protractor.ExpectedConditions;
 
 describe('Dashboard page', () => {
   let page: DashboardPage;
@@ -13,6 +11,18 @@ describe('Dashboard page', () => {
 
   it('Should be able access to Dashboard page', () => {
     expect(browser.getCurrentUrl()).toEqual(page.url);
+  });
+
+  it('should have a title', () => {
+    expect(page.getTitle()).toEqual('Main Dashboard - Google Trends Watcher');
+  });
+
+  it('should have a description meta tag', () => {
+    expect(page.getDescription()).toEqual('Use the dashboard to find the latest trends to watch for in Google Trends');
+  });
+
+  it('should have canonical meta tag', () => {
+    expect(browser.getCurrentUrl()).toEqual(page.getCanonical());
   });
 
   it('should should have a title', () => {

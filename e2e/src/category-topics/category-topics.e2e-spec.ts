@@ -1,7 +1,5 @@
-import { browser, logging, protractor } from 'protractor';
+import { browser, logging } from 'protractor';
 import { CategoryTopicsPage } from './category-topics.po';
-
-const EC = protractor.ExpectedConditions;
 
 describe('Category topics page', () => {
   let page: CategoryTopicsPage;
@@ -10,6 +8,18 @@ describe('Category topics page', () => {
     page = new CategoryTopicsPage();
     page.navigateTo();
     page.navigateToCategoriesTopicsPage();
+  });
+
+  it('should have a title', () => {
+    expect(page.getTitle()).toEqual('Selected Trends - Google Trends Watcher');
+  });
+
+  it('should have a description meta tag', () => {
+    expect(page.getDescription()).toEqual('Use the selected trends page to find the latest topics breaking out in Google Trends');
+  });
+
+  it('should have a canonical meta tag', () => {
+    expect(browser.getCurrentUrl()).toEqual(page.getCanonical());
   });
 
   it('Should be able access to Category topics page', () => {
@@ -27,7 +37,6 @@ describe('Category topics page', () => {
   });
 
   it('Should be able to save category', async () => {
-    // page.navigateToCategoriesTopicsPage();
     page.setCategoryNameInput('e2e category');
     page.clickSaveButton();
 

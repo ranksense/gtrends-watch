@@ -1,7 +1,8 @@
 import { browser, by, element } from 'protractor';
+import { baseURL } from '../config';
 
 export class CategoriesPage {
-  url = `http://localhost:4200/trends`;
+  url = `${baseURL}/trends`;
 
   navigateTo() {
     return browser.get(this.url) as Promise<any>;
@@ -25,5 +26,17 @@ export class CategoriesPage {
 
   clickDeleteLastCategoryButton() {
     return element(by.css('app-categories ul.categories li:last-child button[data-protractor=delete-category-button]')).click();
+  }
+
+  getTitle() {
+    return browser.getTitle();
+  }
+
+  getDescription() {
+    return element(by.css('head meta[name="description"]')).getAttribute('content');
+  }
+
+  getCanonical() {
+    return element(by.css('head link[rel="canonical"]')).getAttribute('href');
   }
 }
