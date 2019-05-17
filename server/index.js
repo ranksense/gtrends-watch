@@ -1,17 +1,3 @@
-/*
-const express = require('express');
-const path = require('path');
-
-const app = express();
-const port = process.env.PORT || 5000;
-
-app.use(express.static(path.join(__dirname, 'public')));
-app.use('*', express.static(path.join(__dirname, 'public')));
-
-app.listen(port, () => console.log(`Listening on ${port}`));
-
-*/
-
 const express = require('express');
 const app = express();
 const rendertron = require('rendertron-middleware');
@@ -19,7 +5,16 @@ const PORT = process.env.PORT || 8080;
 const DIST_FOLDER = process.cwd() + '/public';
 
 // Add googlebot to the list of bots we will use Rendertron for
-const BOTS = rendertron.botUserAgents.concat('googlebot');
+
+const botUserAgents = [
+  'googlebot',
+  'google-structured-data-testing-tool',
+  'bingbot',
+  'linkedinbot',
+  'mediapartners-google',
+];
+
+const BOTS = rendertron.botUserAgents.concat(botUserAgents);
 const BOT_UA_PATTERN = new RegExp(BOTS.join('|'), 'i');
 
 app.set('view engine', 'html');

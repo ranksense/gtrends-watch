@@ -26,7 +26,8 @@ export class SeoService {
       link.setAttribute('rel', 'canonical');
       this.doc.head.appendChild(link);
       link.setAttribute('href', this.doc.URL);
-
+    } else {
+      canonical.setAttribute('href', this.doc.URL);
     }
   }
 
