@@ -6,20 +6,24 @@ const { SpecReporter } = require('jasmine-spec-reporter');
 exports.config = {
   allScriptsTimeout: 11000,
   specs: [
-    './src/client-render/**/*.e2e-spec.ts'
+    './src/rerender/**/*.e2e-spec.ts'
   ],
   capabilities: {
-    'browserName': 'chrome'
+    'browserName': 'chrome',
+    chromeOptions: {
+      args: ["--user-agent='google-trends-watcher-e2e-test'"]
+    }
   },
   directConnect: true,
-  baseUrl: 'http://localhost:4200/',
+  baseUrl: 'http://localhost:8080/',
   framework: 'jasmine',
   jasmineNodeOpts: {
     showColors: true,
     defaultTimeoutInterval: 30000,
-    print: function() {}
+    print: function () { }
   },
   onPrepare() {
+    browser.ignoreSynchronization = true;
     require('ts-node').register({
       project: require('path').join(__dirname, './tsconfig.e2e.json')
     });

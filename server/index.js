@@ -12,6 +12,7 @@ const botUserAgents = [
   'bingbot',
   'linkedinbot',
   'mediapartners-google',
+  'google-trends-watcher-e2e-test'
 ];
 
 const BOTS = rendertron.botUserAgents.concat(botUserAgents);
@@ -21,7 +22,8 @@ app.set('view engine', 'html');
 
 // Add Rendertron middleware to send bot requests to Rendertron
 app.use(rendertron.makeMiddleware({
-  proxyUrl: 'https://render-tron.appspot.com/render', // this is a DEMO URL! Do not use this in production!
+  proxyUrl: 'http://localhost:3000/render', // Local
+  // proxyUrl: 'https://render-tron.appspot.com/', // render-tron.appspot.com
   userAgentPattern: BOT_UA_PATTERN
 }));
 
