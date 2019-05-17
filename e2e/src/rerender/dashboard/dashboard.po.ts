@@ -1,23 +1,10 @@
 import { browser, by, element } from 'protractor';
-import { baseURL } from '../config';
 
 export class DashboardPage {
-  url = `${baseURL}/dashboard`;
+  url = `${browser.baseUrl}/dashboard`;
 
   navigateTo() {
     return browser.get(this.url) as Promise<any>;
-  }
-
-  getTitle() {
-    return browser.getTitle();
-  }
-
-  getDescription() {
-    return element(by.css('head meta[name="description"]')).getAttribute('content');
-  }
-
-  getCanonical() {
-    return element(by.css('head link[rel="canonical"]')).getAttribute('href');
   }
 
   getTitleText() {

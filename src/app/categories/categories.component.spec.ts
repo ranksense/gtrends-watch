@@ -3,7 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { CategoriesComponent } from './categories.component';
 import { CategoryService } from '../category.service';
-import { MetaTagsService } from '../meta-tags.service';
+import { SeoService } from '../seo.service';
 import { of } from 'rxjs';
 
 describe('CategoriesComponent', () => {
@@ -14,7 +14,7 @@ describe('CategoriesComponent', () => {
     'getCategories'
   ]);
 
-  const metaTagsService = jasmine.createSpyObj('MetaTagsService', [
+  const seoService = jasmine.createSpyObj('SeoService', [
     'setCanonicalURL',
     'setPageTitle',
     'setMetaDescription'
@@ -29,7 +29,7 @@ describe('CategoriesComponent', () => {
       declarations: [CategoriesComponent],
       providers: [
         { provide: CategoryService, useValue: categoryService },
-        { provide: MetaTagsService, useValue: metaTagsService }
+        { provide: SeoService, useValue: seoService }
       ]
     })
       .compileComponents();
@@ -46,16 +46,16 @@ describe('CategoriesComponent', () => {
   });
 
   it(`should have call setCanonicalURL function when init component`, () => {
-    expect(metaTagsService.setCanonicalURL).toHaveBeenCalled();
+    expect(seoService.setCanonicalURL).toHaveBeenCalled();
   });
 
   it(`should have call setPageTitle function when init component`, () => {
     const pageTitle = 'Global Trends - Google Trends Watcher';
-    expect(metaTagsService.setPageTitle).toHaveBeenCalledWith(pageTitle);
+    expect(seoService.setPageTitle).toHaveBeenCalledWith(pageTitle);
   });
 
   it(`should have call setMetaDescription function when init component`, () => {
-    expect(metaTagsService.setMetaDescription).toHaveBeenCalled();
+    expect(seoService.setMetaDescription).toHaveBeenCalled();
   });
 
 });

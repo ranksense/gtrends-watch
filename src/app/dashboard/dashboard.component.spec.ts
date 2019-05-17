@@ -5,7 +5,7 @@ import { of } from 'rxjs';
 
 import { DashboardComponent } from './dashboard.component';
 import { CategoryService } from '../category.service';
-import { MetaTagsService } from '../meta-tags.service';
+import { SeoService } from '../seo.service';
 
 @Component({ selector: 'app-category-search', template: '' })
 class CategorySearchStubComponent { }
@@ -21,7 +21,7 @@ describe('DashboardComponent', () => {
     'getCategories'
   ]);
 
-  const metaTagsService = jasmine.createSpyObj('MetaTagsService', [
+  const seoService = jasmine.createSpyObj('SeoService', [
     'setCanonicalURL',
     'setPageTitle',
     'setMetaDescription'
@@ -42,7 +42,7 @@ describe('DashboardComponent', () => {
       ],
       providers: [
         { provide: CategoryService, useValue: categoryService },
-        { provide: MetaTagsService, useValue: metaTagsService }
+        { provide: SeoService, useValue: seoService }
       ]
     })
       .compileComponents();
@@ -59,16 +59,16 @@ describe('DashboardComponent', () => {
   });
 
   it(`should have call function setCanonicalURL when init component`, () => {
-    expect(metaTagsService.setCanonicalURL).toHaveBeenCalled();
+    expect(seoService.setCanonicalURL).toHaveBeenCalled();
   });
 
   it(`should have call function setPageTitle when init component`, () => {
     const pageTitle = 'Main Dashboard - Google Trends Watcher';
-    expect(metaTagsService.setPageTitle).toHaveBeenCalledWith(pageTitle);
+    expect(seoService.setPageTitle).toHaveBeenCalledWith(pageTitle);
   });
 
   it(`should have call function setMetaDescription when init component`, () => {
-    expect(metaTagsService.setMetaDescription).toHaveBeenCalled();
+    expect(seoService.setMetaDescription).toHaveBeenCalled();
   });
 
 });

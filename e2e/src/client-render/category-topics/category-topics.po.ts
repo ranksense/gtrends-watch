@@ -1,9 +1,8 @@
 import { browser, by, element } from 'protractor';
-import { baseURL } from '../config';
 
 export class CategoryTopicsPage {
-  dashboardUrl = `${baseURL}/dashboard`;
-  categoryTopicsUrl = `${baseURL}/topics`;
+  dashboardUrl = `${browser.baseUrl}/dashboard`;
+  categoryTopicsUrl = `${browser.baseUrl}/topics`;
 
   navigateTo() {
     return browser.get(this.dashboardUrl) as Promise<any>;

@@ -5,7 +5,7 @@ import { DOCUMENT } from '@angular/common';
 @Injectable({
   providedIn: 'root'
 })
-export class MetaTagsService {
+export class SeoService {
   constructor(
     private title: Title,
     private meta: Meta,

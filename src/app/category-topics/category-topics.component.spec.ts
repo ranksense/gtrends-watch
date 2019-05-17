@@ -5,7 +5,7 @@ import { of } from 'rxjs';
 
 import { CategoryTopicsComponent } from './category-topics.component';
 import { CategoryService } from '../category.service';
-import { MetaTagsService } from '../meta-tags.service';
+import { SeoService } from '../seo.service';
 
 describe('CategoryTopicsComponent', () => {
   let component: CategoryTopicsComponent;
@@ -15,7 +15,7 @@ describe('CategoryTopicsComponent', () => {
     'getCategory'
   ]);
 
-  const metaTagsService = jasmine.createSpyObj('MetaTagsService', [
+  const seoService = jasmine.createSpyObj('SeoService', [
     'setCanonicalURL',
     'setPageTitle',
     'setMetaDescription'
@@ -33,7 +33,7 @@ describe('CategoryTopicsComponent', () => {
       declarations: [CategoryTopicsComponent],
       providers: [
         { provide: CategoryService, useValue: categoryService },
-        { provide: MetaTagsService, useValue: metaTagsService }
+        { provide: SeoService, useValue: seoService }
       ]
     })
       .compileComponents();
@@ -50,15 +50,15 @@ describe('CategoryTopicsComponent', () => {
   });
 
   it(`should have call setCanonicalURL function when init component`, () => {
-    expect(metaTagsService.setCanonicalURL).toHaveBeenCalled();
+    expect(seoService.setCanonicalURL).toHaveBeenCalled();
   });
 
   it(`should have call setPageTitle function when init component`, () => {
-    expect(metaTagsService.setPageTitle).toHaveBeenCalled();
+    expect(seoService.setPageTitle).toHaveBeenCalled();
   });
 
   it(`should have call setMetaDescription function when init component`, () => {
-    expect(metaTagsService.setMetaDescription).toHaveBeenCalled();
+    expect(seoService.setMetaDescription).toHaveBeenCalled();
   });
 
 });

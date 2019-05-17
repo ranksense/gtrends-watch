@@ -1,8 +1,7 @@
 import { browser, by, element } from 'protractor';
-import { baseURL } from '../config';
 
 export class CategoriesPage {
-  url = `${baseURL}/trends`;
+  url = `${browser.baseUrl}/trends`;
 
   navigateTo() {
     return browser.get(this.url) as Promise<any>;

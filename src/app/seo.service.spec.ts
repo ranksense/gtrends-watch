@@ -1,10 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 import { Title, Meta } from '@angular/platform-browser';
 
-import { MetaTagsService } from './meta-tags.service';
+import { SeoService } from './seo.service';
 
-describe('MetaTagsService', () => {
-  let service: MetaTagsService;
+describe('SeoService', () => {
+  let service: SeoService;
   let titleService: Title = jasmine.createSpyObj('Title', ['setTitle']);
   let metaService: Meta = jasmine.createSpyObj('Meta', ['updateTag']);
 
@@ -16,7 +16,7 @@ describe('MetaTagsService', () => {
   }));
 
   beforeEach(() => {
-    service = TestBed.get(MetaTagsService);
+    service = TestBed.get(SeoService);
   });
 
   it('should be created', () => {
