@@ -22,6 +22,29 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
+## Running end-to-end tests rerender
+
+Install protractor `npm install -g protractor`
+
+- `webdriver-manager update`
+
+- `webdriver-manager start`
+
+Build angular prod 
+
+`ng build --prod`
+Copy dist/browser folder to server/public
+
+Run express server
+
+- `cd server`
+- `npm install`
+- `npm run start`
+
+Run rendertron on local https://github.com/GoogleChrome/rendertron#installing--deploying
+
+Run `protractor e2e/protractor.rerender.conf.js` to execute the end-to-end tests rerender rendertron
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

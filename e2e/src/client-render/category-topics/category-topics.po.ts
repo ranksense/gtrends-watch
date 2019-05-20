@@ -1,11 +1,23 @@
 import { browser, by, element } from 'protractor';
 
 export class CategoryTopicsPage {
-  dashboardUrl = `http://localhost:4200/dashboard`;
-  categoryTopicsUrl = `http://localhost:4200/topics`;
+  dashboardUrl = `${browser.baseUrl}/dashboard`;
+  categoryTopicsUrl = `${browser.baseUrl}/topics`;
 
   navigateTo() {
     return browser.get(this.dashboardUrl) as Promise<any>;
+  }
+
+  getTitle() {
+    return browser.getTitle();
+  }
+
+  getDescription() {
+    return element(by.css('head meta[name="description"]')).getAttribute('content');
+  }
+
+  getCanonical() {
+    return element(by.css('head link[rel="canonical"]')).getAttribute('href');
   }
 
   navigateToCategoriesTopicsPage() {
@@ -13,7 +25,7 @@ export class CategoryTopicsPage {
   }
 
   getTopics() {
-    return element.all(by.css('app-category-topics ul.topics li')) ;
+    return element.all(by.css('app-category-topics ul.topics li'));
   }
 
   clickGoBackButton() {

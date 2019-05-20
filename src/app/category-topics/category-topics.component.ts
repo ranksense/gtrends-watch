@@ -7,7 +7,7 @@ import { takeUntil } from 'rxjs/operators';
 
 import { CategoryService } from '../category.service';
 import { Category } from '../category';
-import { MetaTagsService } from '../meta-tags.service';
+import { SeoService } from '../seo.service';
 
 @Component({
   selector: 'app-category-topics',
@@ -24,16 +24,14 @@ export class CategoryTopicsComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private categoryService: CategoryService,
     private location: Location,
-    private metaTagsService: MetaTagsService
+    private seo: SeoService
   ) {
   }
 
   ngOnInit() {
     this.getCategory();
     // SEO tags
-    this.metaTagsService.setCanonicalURL();
-    this.metaTagsService.setPageTitle('Selected Trends - Google Trends Watcher');
-    this.metaTagsService.setMetaDescription('Use the selected trends page to find the latest topics breaking out in Google Trends');
+    this.seo.setCanonicalURL();
   }
 
   ngOnDestroy() {
@@ -49,8 +47,8 @@ export class CategoryTopicsComponent implements OnInit, OnDestroy {
     ).subscribe((category: Category) => {
       this.category = category;
 
-      this.metaTagsService.setPageTitle(`${this.category.name} Trends - Google Trends Watcher`);
-      this.metaTagsService.setMetaDescription(`Use the ${this.category.name} trends page to find the latest topics breaking out in Google Trends`);
+      this.seo.setPageTitle(`${this.category.name} Trends - Google Trends Watcher`);
+      this.seo.setMetaDescription(`Use the ${this.category.name} trends page to find the latest topics breaking out in Google Trends`);
     });
   }
 

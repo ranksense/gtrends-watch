@@ -1,32 +1,34 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Category } from '../category';
-//import { CATEGORIES } from '../mock-categories';
-import {CategoryService} from "../category.service";
- 
-import { MetaTagsService} from '../meta-tags.service';
+import { CategoryService } from '../category.service';
+import { SeoService } from '../seo.service';
 
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.css']
 })
- 
+
 export class CategoriesComponent implements OnInit {
- 
+
   categories: Category[];
- 
-  constructor(private categoryService: CategoryService, private metaTagsService: MetaTagsService ) { }
- 
+
+  constructor(
+    private categoryService: CategoryService,
+    private seo: SeoService
+  ) { }
+
   ngOnInit() {
     this.getCategories();
 
-   //SEO tags
-   this.metaTagsService.setCanonicalURL();
-   this.metaTagsService.setPageTitle('Global Trends - Google Trends Watcher'); 
-   this.metaTagsService.setMetaDescription("Use the global trends page to narrow down into specific categories");
-    
+    //SEO tags
+    this.seo.setCanonicalURL();
+    this.seo.setPageTitle('Global Trends - Google Trends Watcher');
+    this.seo.setMetaDescription('Use the global trends page to narrow down into specific categories');
+
   }
- 
+
   add(name: string): void {
     name = name.trim();
     if (!name) { return; }
@@ -43,6 +45,6 @@ export class CategoriesComponent implements OnInit {
 
   getCategories(): void {
     this.categoryService.getCategories()
-        .subscribe(categories => this.categories = categories);
+      .subscribe(categories => this.categories = categories);
   }
 }

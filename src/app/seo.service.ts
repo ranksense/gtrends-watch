@@ -5,7 +5,7 @@ import { DOCUMENT } from '@angular/common';
 @Injectable({
   providedIn: 'root'
 })
-export class MetaTagsService {
+export class SeoService {
   constructor(
     private title: Title,
     private meta: Meta,
@@ -26,7 +26,8 @@ export class MetaTagsService {
       link.setAttribute('rel', 'canonical');
       this.doc.head.appendChild(link);
       link.setAttribute('href', this.doc.URL);
-
+    } else {
+      canonical.setAttribute('href', this.doc.URL);
     }
   }
 

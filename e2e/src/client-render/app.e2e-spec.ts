@@ -20,13 +20,13 @@ describe('workspace-project App', () => {
   it('Should be able navigate to Search Trends page', () => {
     const searchTrendLink = page.getNavigations().get(1);
     searchTrendLink.click();
-    expect(browser.getCurrentUrl()).toEqual('http://localhost:4200/trends');
+    expect(browser.getCurrentUrl()).toEqual(`${browser.baseUrl}/trends`);
   });
 
   it('Should be able navigate to Dashboard page', () => {
     const dashboardLink = page.getNavigations().get(0);
     dashboardLink.click();
-    expect(browser.getCurrentUrl()).toEqual('http://localhost:4200/dashboard');
+    expect(browser.getCurrentUrl()).toEqual(`${browser.baseUrl}/dashboard`);
   });
 
 
